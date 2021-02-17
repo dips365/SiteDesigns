@@ -1,0 +1,139 @@
+{
+    "$schema": "schema.json",
+    "actions": [
+        {
+            "verb": "createSiteColumn",
+            "fieldType": "Text",
+            "internalName": "ProjectStatus",
+            "displayName": "Project Status",
+            "isRequired": false,
+            "group": "Contoso Custom",
+            "enforceUnique": true,
+            "id": "181c4370-cdae-471b-9499-730046e55b75"
+        },
+        {
+            "verb": "createSiteColumn",
+            "fieldType": "Number",
+            "internalName": "EffortsInDays",
+            "displayName": "Effort in Days",
+            "group": "Contoso Custom",
+            "isRequired": false,
+            "id": "181c4370-cdae-471b-9499-730046e55b74"
+        },
+        {
+            "verb": "createSiteColumn",
+            "fieldType": "Note",
+            "internalName": "MeetingNotes",
+            "displayName": "Meeting Notes",
+            "group": "Contoso Custom",
+            "isRequired": false,
+            "id": "181c4370-cdae-471b-9499-730046e55b73"
+        },
+        {
+            "verb": "createSiteColumn",
+            "fieldType": "User",
+            "internalName": "ProjectOwner",
+            "displayName": "Project Owner",
+            "group": "Contoso Custom",
+            "isRequired": false,
+            "id": "181c4370-cdae-471b-9499-730046e55b72"
+        },
+        {
+            "verb": "createContentType",
+            "name": "Contoso Projects",
+            "description": "custom list content type",
+            "parentName": "Item",
+            "hidden": false,
+            "subactions": [
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "ProjectStatus"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "EffortsInDays"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "MeetingNotes"
+                },
+                {
+                    "verb": "addSiteColumn",
+                    "internalName": "ProjectOwner"
+                }
+            ]
+        },
+        {
+            "verb": "createSPList",
+            "listName": "ProjectManagement",
+            "templateType": 100,
+            "subactions": [
+                {
+                    "verb": "setDescription",
+                    "description": "List of Customers and Orders"
+                },
+                {
+                    "verb": "addContentType",
+                    "name": "Contoso Projects"
+                }
+            ]
+        },
+        {
+            "verb": "addNavLink",
+            "url": "https://google.co.in",
+            "displayName": "Event Collateral",
+            "navComponent": "Hub",
+            "isWebRelative": true
+        },
+        {
+            "verb": "addNavLink",
+            "url": "/Lists/ProjectManagement",
+            "displayName": "Project Management",
+            "isWebRelative": false
+        },
+        {
+            "verb": "addNavLink",
+            "url": "https://docs.microsoft.com/sharepoint/dev/declarative-customization/site-design-overview",
+            "displayName": "SharePoint Site Design Overview",
+            "parentDisplayName": "Documents"
+        },
+        {
+            "verb": "addNavLink",
+            "url": "https://docs.microsoft.com/sharepoint/dev/declarative-customization/site-design-json-schema#add-a-navigation-link",
+            "displayName": "About Site Footer",
+            "navComponent": "Footer"
+        },
+        {
+            "verb": "addNavLink",
+            "url": "https://google.co.in",
+            "displayName": "Linkless Heading",
+            "isWebRelative": false
+        },
+        {
+            "verb": "applyTheme",
+            "themeName": "Standex"
+        },
+        {
+            "verb": "setSiteBranding",
+            "navigationLayout": "Megamenu",
+            "headerLayout": "Compact",
+            "headerBackground": "Strong",
+            "showFooter": true
+        },
+        {
+            "verb": "setSiteExternalSharingCapability",
+            "capability": "ExternalUserSharingOnly"
+        },
+        {
+            "verb": "triggerFlow", 
+            "url": "https://prod-20.centralindia.logic.azure.com:443/workflows/f2a592a0d0e247319a82c8f3e81916cf/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=f45B-BCzMe_wmCzOJJ6VSRiePRuUf-cRgLVxNQaZlp0",
+            "name": "Record site creation event",
+            "parameters": {
+              "event": "site creation",
+              "product": "SharePoint Online"
+            }
+        }
+    ],
+    "bindata": {},
+    "version": 1
+}
